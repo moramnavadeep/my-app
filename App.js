@@ -729,7 +729,7 @@ function TestimonialsSection() {
   useEffect(() => {
     const interval = setInterval(nextTestimonial, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [nextTestimonial]);
   
   return (
     <section className="testimonials">
