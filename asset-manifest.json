@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/moramnavadeep/my-app.git/static/css/main.f7521db8.css",
+    "main.js": "/moramnavadeep/my-app.git/static/js/main.fca7735f.js",
+    "static/js/453.6c51065b.chunk.js": "/moramnavadeep/my-app.git/static/js/453.6c51065b.chunk.js",
+    "index.html": "/moramnavadeep/my-app.git/index.html",
+    "main.f7521db8.css.map": "/moramnavadeep/my-app.git/static/css/main.f7521db8.css.map",
+    "main.fca7735f.js.map": "/moramnavadeep/my-app.git/static/js/main.fca7735f.js.map",
+    "453.6c51065b.chunk.js.map": "/moramnavadeep/my-app.git/static/js/453.6c51065b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f7521db8.css",
+    "static/js/main.fca7735f.js"
+  ]
+}
