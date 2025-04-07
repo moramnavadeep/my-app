@@ -1,4 +1,4 @@
-import React, { useState, useEffect , useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import "./style.css";
 
 function App() {
@@ -97,7 +97,6 @@ function Header({ cartCount, onCartOpen, onContactOpen }) {
   );
 }
 
-// 📞 **Contact Section**
 const ContactSection = ({ onContactOpen }) => {
   return (
     <section id="contact" className="contact-section">
@@ -109,8 +108,6 @@ const ContactSection = ({ onContactOpen }) => {
     </section>
   );
 };
-
-// 📞 **Contact Popup**
 const ContactPopup = ({ onClose }) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -302,7 +299,9 @@ function AboutSection() {
             handcrafted in small batches to ensure quality and potency, keeping the tradition 
             of Ayurveda alive while making it accessible to everyone.
           </p>
-          <button className="read-more">Read more about our story</button>
+           <a href="/about-page" className="read-more">
+            Read more about our story
+           </a>
         </div>
       </div>
     </section>
@@ -685,68 +684,9 @@ function DoshaQuiz({ onClose }) {
   );
 }
 
-function TestimonialsSection() {
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
-  const testimonials = [
-    // your testimonial objects
-  ];
 
-  // useCallback ensures referential stability
-  const nextTestimonial = useCallback(() => {
-    setCurrentTestimonial((prev) =>
-      prev === testimonials.length - 1 ? 0 : prev + 1
-    );
-  }, [testimonials.length]);
-
-  const prevTestimonial = useCallback(() => {
-    setCurrentTestimonial((prev) =>
-      prev === 0 ? testimonials.length - 1 : prev - 1
-    );
-  }, [testimonials.length]);
-
-  // Now useEffect is safely depending on a memoized function
-  useEffect(() => {
-    const interval = setInterval(nextTestimonial, 5000);
-    return () => clearInterval(interval);
-  }, [nextTestimonial]);
-
-  return (
-   <section className="testimonials">
-      <h2>What Our Customers Say</h2>
-
-      <div className="testimonial-slider">
-        <button className="slider-btn prev" onClick={prevTestimonial}>❮</button>
-
-        <div className="testimonial-card">
-          <div className="testimonial-image">
-            <img 
-              src={testimonials[currentTestimonial].image} 
-              alt={testimonials[currentTestimonial].name} 
-            />
-          </div>
-          <div className="testimonial-content">
-            <p>"{testimonials[currentTestimonial].text}"</p>
-            <h4>{testimonials[currentTestimonial].name}</h4>
-            <p className="location">{testimonials[currentTestimonial].location}</p>
-          </div>
-        </div>
-
-        <button className="slider-btn next" onClick={nextTestimonial}>❯</button>
-      </div>
-
-      <div className="testimonial-dots">
-        {testimonials.map((_, index) => (
-          <button 
-            key={index} 
-            className={`dot ${index === currentTestimonial ? 'active' : ''}`}
-            onClick={() => setCurrentTestimonial(index)}
-          ></button>
-        ))}
-      </div>
-    </section>
-  );
-}// Blog Section Component
+// Blog Section Component
 function BlogSection() {
   const blogPosts = [
     {

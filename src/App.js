@@ -32,7 +32,6 @@ function App() {
         <AboutSection />
         <ProductsSection />
         <DoshaSection />
-        <TestimonialsSection />
         <BlogSection />
         <NewsletterSection />
         <ContactSection onContactOpen={() => setShowContact(true)} />
@@ -85,7 +84,7 @@ function Header({ cartCount, onCartOpen, onContactOpen }) {
           <li><a href="#products">Products</a></li>
           <li><a href="#doshas">Doshas</a></li>
           <li><a href="#blog">Blog</a></li>
-          <li><button onClick={onContactOpen} className="contact-btn">Contact</button></li>
+          <li><a href="#Contact"><button onClick={onContactOpen} className="contact-btn">Contact</button></a></li>
           <li>
             <button className="cart-icon" onClick={onCartOpen}>
               🛒 Cart <span className="cart-count">{cartCount}</span>
@@ -234,6 +233,8 @@ const PaymentMethods = ({ onClose, onPaymentSuccess }) => {
     }, 2000);
   };
 
+
+
   return (
     <div className="popup-overlay">
       <div className="popup-box">
@@ -302,7 +303,9 @@ function AboutSection() {
             handcrafted in small batches to ensure quality and potency, keeping the tradition 
             of Ayurveda alive while making it accessible to everyone.
           </p>
-          <button className="read-more">Read more about our story</button>
+          <a href="https://vit.ac.in/" className="read-more">
+           Read more about our story
+          </a>
         </div>
       </div>
     </section>
@@ -686,88 +689,6 @@ function DoshaQuiz({ onClose }) {
 }
 
 
-// Testimonials Section Component
-function TestimonialsSection() {
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
-  
-  const testimonials = [
-    {
-      id: 1,
-      name: 'Priya Sharma',
-      location: 'Mumbai',
-      text: 'I ve been using the Vata Balancing Oil for three months now, and it has completely transformed my dry skin. I feel more grounded and balanced.',
-      image: 'https://media.istockphoto.com/id/1289220545/photo/beautiful-woman-smiling-with-crossed-arms.jpg?s=612x612&w=0&k=20&c=qmOTkGstKj1qN0zPVWj-n28oRA6_BHQN8uVLIXg0TF8='
-    },
-    {
-      id: 2,
-      name: 'Arjun Patel',
-      location: 'Bangalore',
-      text: 'The Pitta Cooling Cream has been a lifesaver during summers. It calms my skin inflammation and helps me stay cool and composed.',
-      image: 'https://media.licdn.com/dms/image/v2/C5603AQHcKz-zZz5n-A/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1517703288857?e=2147483647&v=beta&t=GjCiOGUTqorw2n8RQgDlElFFn_sDUKH0OEStbNux_oY'
-    },
-    {
-      id: 3,
-      name: 'Meera Reddy',
-      location: 'Chennai',
-      text: 'I love the Kapha Energizing Tea! It gives me the perfect boost in the morning without the jitters of coffee. Highly recommend!',
-      image: 'https://media.istockphoto.com/id/1369508766/photo/beautiful-successful-latin-woman-smiling.jpg?s=612x612&w=0&k=20&c=LoznG6eGT42_rs9G1dOLumOTlAveLpuOi_U755l_fqI='
-    }
-  ];
-  
-  const nextTestimonial = () => {
-    setCurrentTestimonial((prev) => 
-      prev === testimonials.length - 1 ? 0 : prev + 1
-    );
-  };
-  
-  const prevTestimonial = () => {
-    setCurrentTestimonial((prev) => 
-      prev === 0 ? testimonials.length - 1 : prev - 1
-    );
-  };
-  
-  useEffect(() => {
-    const interval = setInterval(nextTestimonial, 5000);
-    return () => clearInterval(interval);
-  }, []);
-  
-  return (
-    <section className="testimonials">
-      <h2>What Our Customers Say</h2>
-      
-      <div className="testimonial-slider">
-        <button className="slider-btn prev" onClick={prevTestimonial}>❮</button>
-        
-        <div className="testimonial-card">
-          <div className="testimonial-image">
-            <img 
-              src={testimonials[currentTestimonial].image} 
-              alt={testimonials[currentTestimonial].name} 
-            />
-          </div>
-          <div className="testimonial-content">
-            <p>"{testimonials[currentTestimonial].text}"</p>
-            <h4>{testimonials[currentTestimonial].name}</h4>
-            <p className="location">{testimonials[currentTestimonial].location}</p>
-          </div>
-        </div>
-        
-        <button className="slider-btn next" onClick={nextTestimonial}>❯</button>
-      </div>
-      
-      <div className="testimonial-dots">
-        {testimonials.map((_, index) => (
-          <button 
-            key={index} 
-            className={`dot ${index === currentTestimonial ? 'active' : ''}`}
-            onClick={() => setCurrentTestimonial(index)}
-          ></button>
-        ))}
-      </div>
-    </section>
-  );
-}
-
 // Blog Section Component
 function BlogSection() {
   const blogPosts = [
@@ -824,8 +745,6 @@ return (
   </section>
 );
 }
-
-
 function NewsletterSection() {
   const [formData, setFormData] = useState({ name: "", email: "" });
 
@@ -848,7 +767,7 @@ function NewsletterSection() {
               name="name" 
               value={formData.name} 
               onChange={handleChange} 
-              placeholder="Your Name" 
+              placeholder="moram navadeep" 
               required 
             />
           </div>
@@ -860,7 +779,7 @@ function NewsletterSection() {
               name="email" 
               value={formData.email} 
               onChange={handleChange} 
-              placeholder="Your Email" 
+              placeholder="23BCE2101" 
               required 
             />
           </div>
@@ -871,15 +790,18 @@ function NewsletterSection() {
     </section>
   );
 }// Footer Component
-function Footer() {
+function Footer({ onContactClick }) {
   return (
     <footer>
       <div className="footer-content">
         <div className="footer-logo">
-          <img src="https://media.licdn.com/dms/image/v2/C560BAQGLkqvQ52y-bQ/company-logo_200_200/company-logo_200_200/0/1630593082638/one_earth_projects_india_logo?e=2147483647&v=beta&t=33OdpmkxKkPqdYhp02MvcUjnxUxvf3kF09paGmKEfb4" alt="Prakruti Organics Logo" />
+          <img
+            src="https://media.licdn.com/dms/image/v2/C560BAQGLkqvQ52y-bQ/company-logo_200_200/company-logo_200_200/0/1630593082638/one_earth_projects_india_logo?e=2147483647&v=beta&t=33OdpmkxKkPqdYhp02MvcUjnxUxvf3kF09paGmKEfb4"
+            alt="Prakruti Organics Logo"
+          />
           <h3>Prakruti Organics</h3>
         </div>
-        
+
         <div className="footer-links">
           <div className="footer-column">
             <h4>Quick Links</h4>
@@ -888,10 +810,10 @@ function Footer() {
               <li><a href="#about">About Us</a></li>
               <li><a href="#products">Products</a></li>
               <li><a href="#blog">Blog</a></li>
-              <li><a href="#contact">Contact</a></li>
+      
             </ul>
           </div>
-          
+
           <div className="footer-column">
             <h4>Products</h4>
             <ul>
@@ -901,16 +823,16 @@ function Footer() {
               <li><a href="#all-products">All Products</a></li>
             </ul>
           </div>
-          
+
           <div className="footer-column">
             <h4>Contact Us</h4>
-            <p>Email: info@prakrutiorganics.com</p>
-            <p>Phone: +91 98765 43210</p>
-            <p>Address: 123 Ayurveda Lane, Mumbai, India</p>
+            <p>Email:  moram.navadeep2023@vitstudent.ac.in</p>
+            <p>Phone:  +91 9182200626</p>
+            <p>Address:India</p>
           </div>
         </div>
       </div>
-      
+
       <div className="footer-bottom">
         <p>&copy; 2025 Prakruti Organics. All Rights Reserved.</p>
         <div className="social-icons">
@@ -923,5 +845,4 @@ function Footer() {
     </footer>
   );
 }
-
 export default App;
