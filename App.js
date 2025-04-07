@@ -32,7 +32,6 @@ function App() {
         <AboutSection />
         <ProductsSection />
         <DoshaSection />
-        <TestimonialsSection />
         <BlogSection />
         <NewsletterSection />
         <ContactSection onContactOpen={() => setShowContact(true)} />
@@ -684,8 +683,11 @@ function DoshaQuiz({ onClose }) {
   );
 }
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 22f0345864e1e9e92c63f2c1f105abb80142f0c7
 // Blog Section Component
 function BlogSection() {
   const blogPosts = [
