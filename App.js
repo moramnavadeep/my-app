@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect , useCallback } from "react";
 import "./style.css";
 
 function App() {
@@ -685,59 +685,39 @@ function DoshaQuiz({ onClose }) {
   );
 }
 
-
-// Testimonials Section Component
 function TestimonialsSection() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
-  
+
   const testimonials = [
-    {
-      id: 1,
-      name: 'Priya Sharma',
-      location: 'Mumbai',
-      text: 'I ve been using the Vata Balancing Oil for three months now, and it has completely transformed my dry skin. I feel more grounded and balanced.',
-      image: 'https://media.istockphoto.com/id/1289220545/photo/beautiful-woman-smiling-with-crossed-arms.jpg?s=612x612&w=0&k=20&c=qmOTkGstKj1qN0zPVWj-n28oRA6_BHQN8uVLIXg0TF8='
-    },
-    {
-      id: 2,
-      name: 'Arjun Patel',
-      location: 'Bangalore',
-      text: 'The Pitta Cooling Cream has been a lifesaver during summers. It calms my skin inflammation and helps me stay cool and composed.',
-      image: 'https://media.licdn.com/dms/image/v2/C5603AQHcKz-zZz5n-A/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1517703288857?e=2147483647&v=beta&t=GjCiOGUTqorw2n8RQgDlElFFn_sDUKH0OEStbNux_oY'
-    },
-    {
-      id: 3,
-      name: 'Meera Reddy',
-      location: 'Chennai',
-      text: 'I love the Kapha Energizing Tea! It gives me the perfect boost in the morning without the jitters of coffee. Highly recommend!',
-      image: 'https://media.istockphoto.com/id/1369508766/photo/beautiful-successful-latin-woman-smiling.jpg?s=612x612&w=0&k=20&c=LoznG6eGT42_rs9G1dOLumOTlAveLpuOi_U755l_fqI='
-    }
+    // your testimonial objects
   ];
-  
-  const nextTestimonial = () => {
-    setCurrentTestimonial((prev) => 
+
+  // useCallback ensures referential stability
+  const nextTestimonial = useCallback(() => {
+    setCurrentTestimonial((prev) =>
       prev === testimonials.length - 1 ? 0 : prev + 1
     );
-  };
-  
-  const prevTestimonial = () => {
-    setCurrentTestimonial((prev) => 
+  }, [testimonials.length]);
+
+  const prevTestimonial = useCallback(() => {
+    setCurrentTestimonial((prev) =>
       prev === 0 ? testimonials.length - 1 : prev - 1
     );
-  };
-  
+  }, [testimonials.length]);
+
+  // Now useEffect is safely depending on a memoized function
   useEffect(() => {
     const interval = setInterval(nextTestimonial, 5000);
     return () => clearInterval(interval);
-  }, []);
-  
+  }, [nextTestimonial]);
+
   return (
-    <section className="testimonials">
+   <section className="testimonials">
       <h2>What Our Customers Say</h2>
-      
+
       <div className="testimonial-slider">
         <button className="slider-btn prev" onClick={prevTestimonial}>❮</button>
-        
+
         <div className="testimonial-card">
           <div className="testimonial-image">
             <img 
@@ -751,10 +731,10 @@ function TestimonialsSection() {
             <p className="location">{testimonials[currentTestimonial].location}</p>
           </div>
         </div>
-        
+
         <button className="slider-btn next" onClick={nextTestimonial}>❯</button>
       </div>
-      
+
       <div className="testimonial-dots">
         {testimonials.map((_, index) => (
           <button 
@@ -766,9 +746,7 @@ function TestimonialsSection() {
       </div>
     </section>
   );
-}
-
-// Blog Section Component
+}// Blog Section Component
 function BlogSection() {
   const blogPosts = [
     {
