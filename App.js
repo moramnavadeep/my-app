@@ -32,7 +32,6 @@ function App() {
         <AboutSection />
         <ProductsSection />
         <DoshaSection />
-        <TestimonialsSection />
         <BlogSection />
         <NewsletterSection />
         <ContactSection onContactOpen={() => setShowContact(true)} />
