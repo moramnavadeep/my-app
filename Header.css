@@ -1,0 +1,133 @@
+.h-wrapper {
+    color: white;
+}
+
+.h-container {
+    justify-content: space-between;
+    color: var(--secondary);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.h-menu ul {
+    gap: 1rem;
+    list-style: none;
+    text-transform: capitalize;
+}
+
+.h-menu ul > li {
+    cursor: pointer;
+}
+
+.menu-icon {
+    display: none;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .menu-icon {
+        display: block;
+        padding-right: 15px;
+    }
+
+    .menu-icon:hover {
+        opacity: 0.8;
+    }
+
+    .h-container {
+        padding: 0 1rem; /* Add spacing for mobile */
+    }
+
+    .h-container img {
+        width: 80px;
+    }
+
+    .h-menu ul {
+        color: var(--black);
+        position: absolute;
+        top: 3rem;
+        right: -100%; /* Initially hidden */
+        transform: translateX(0);
+        opacity: 0;
+        background: white;
+        flex-direction: column;
+        padding: 3rem;
+        font-weight: 500;
+        gap: 2rem;
+        border-radius: 10px;
+        align-items: flex-start;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+        transition: all 300ms ease-in;
+        /* border: 2px solid rebeccapurple; */
+        z-index: 100;
+    }
+
+    .h-menu.open ul {
+        right: 3rem; /* Slide-in effect */
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+  
+  .popup {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  .popup h2 {
+    margin-bottom: 20px;
+  }
+  
+  .popup label {
+    display: block;
+    margin-top: 10px;
+  }
+  
+  .popup input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .popup-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .popup .button.cancel {
+    background-color: #ccc;
+  }
+  .location-display {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .location-display .primaryText {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--blue);
+  }
+  
+  .location-display .secondaryText {
+    font-size: 1rem;
+    color: var(--gray);
+  }

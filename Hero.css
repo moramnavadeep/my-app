@@ -1,0 +1,154 @@
+.hero-wrapper {
+  color: white;
+  position: relative;
+  padding-bottom: 2rem;
+}
+
+.hero-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Left Side */
+.hero-left {
+  flex: 1;
+  min-width: 300px;
+}
+
+.hero-content {
+  gap: 2rem;
+}
+
+.hero-title {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-title > h1 {
+  font-weight: 600;
+  font-size: 3.8rem;
+  line-height: 4rem;
+  text-transform: capitalize;
+}
+
+.orange-circle {
+  height: 3.4rem;
+  width: 3.4rem;
+  background: var(--orange-gradient);
+  border-radius: 100%;
+  position: absolute;
+  right: 29%;
+  top: -8%;
+  z-index: -1;
+}
+
+.hero-description span {
+  margin-bottom: 0.5rem;
+}
+
+/* Search Bar */
+.hero-search-bar {
+  background-color: white;
+  border-radius: 5px;
+  border: 3px solid rgba(120, 120, 120, 0.375);
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+.hero-search-bar > input {
+  border: none;
+  outline: none;
+  flex: 1;
+}
+
+/* Location Display */
+.location-display {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+/* Stats */
+.hero-stats {
+  margin-top: 2rem;
+  width: 100%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.hero-stats-content > :nth-child(1) {
+  font-size: 2rem;
+}
+
+.hero-stats-content > :nth-child(1) > :last-child {
+  color: orange;
+}
+
+/* Right Side */
+.hero-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 300px;
+}
+
+.image-container {
+  width: 30rem;
+  height: 35rem;
+  overflow: hidden;
+  border-radius: 15rem 15rem 0 0;
+  border: 8px solid rgba(255, 255, 255, 0.12);
+}
+
+.image-container > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-container {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .hero-title > h1 {
+      font-size: 2.5rem;
+      line-height: 3rem;
+  }
+
+  .hero-search-bar {
+      flex-direction: column;
+      align-items: stretch;
+  }
+
+  .hero-search-bar > input {
+      width: 100%;
+  }
+
+  .image-container {
+      width: 100%;
+      height: 25rem;
+  }
+
+  .hero-stats {
+      justify-content: center;
+  }
+
+  .hero-stats-content > :nth-child(1) {
+      font-size: 1.5rem;
+  }
+
+  .hero-stats-content > :nth-child(2) {
+      font-size: 0.8rem;
+  }
+}
